@@ -8,11 +8,11 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
-    allowedHosts: true,
+    allowedHosts: ['dssm.up.railway.app', '.up.railway.app', '.railway.app', 'localhost', '127.0.0.1'],
   },
   preview: {
     port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
     host: '0.0.0.0',
-    allowedHosts: true,
+    allowedHosts: ['dssm.up.railway.app', '.up.railway.app', '.railway.app', 'localhost', '127.0.0.1'],
   },
 });
