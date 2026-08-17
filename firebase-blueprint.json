@@ -1,0 +1,151 @@
+{
+  "entities": {
+    "devotee": {
+      "title": "Devotee",
+      "description": "Devotee profile information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "gothra": { "type": "string" },
+        "nakshatra": { "type": "string" },
+        "rashi": { "type": "string" },
+        "address": { "type": "string" },
+        "totalVisits": { "type": "number" },
+        "totalContribution": { "type": "number" },
+        "lastVisitDate": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "seva": {
+      "title": "Seva",
+      "description": "Temple Seva catalogue item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "nameKn": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "categoryKn": { "type": "string" },
+        "description": { "type": "string" },
+        "timing": { "type": "string" },
+        "isSpecial": { "type": "boolean" },
+        "hasCustomPrice": { "type": "boolean" },
+        "defaultDakshina": { "type": "number" }
+      },
+      "required": ["id", "name", "price"]
+    },
+    "bill": {
+      "title": "Bill",
+      "description": "Devotee billing receipt record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "receiptNo": { "type": "string" },
+        "devoteeName": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "gothra": { "type": "string" },
+        "nakshatra": { "type": "string" },
+        "rashi": { "type": "string" },
+        "paymentMode": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "totalDakshina": { "type": "number" },
+        "grandTotal": { "type": "number" },
+        "cashierName": { "type": "string" },
+        "cashierRole": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "receiptNo", "devoteeName", "grandTotal"]
+    },
+    "expense": {
+      "title": "Expense",
+      "description": "Temple debit expense voucher",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "voucherNo": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMode": { "type": "string" },
+        "paidTo": { "type": "string" },
+        "approvedBy": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "voucherNo", "amount"]
+    },
+    "ledger": {
+      "title": "AccountLedger",
+      "description": "Live financial ledger balance",
+      "type": "object",
+      "properties": {
+        "cashInHand": { "type": "number" },
+        "bankBalance": { "type": "number" },
+        "capitalFund": { "type": "number" },
+        "annadanaFund": { "type": "number" }
+      },
+      "required": ["cashInHand", "bankBalance"]
+    },
+    "user": {
+      "title": "SystemUser",
+      "description": "Authorized billing terminal operator",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "username": { "type": "string" },
+        "role": { "type": "string" }
+      },
+      "required": ["id", "name", "username", "role"]
+    },
+    "settings": {
+      "title": "TempleSettings",
+      "description": "Temple configuration and receipt printing rules",
+      "type": "object",
+      "properties": {
+        "templeName": { "type": "string" },
+        "tagline": { "type": "string" },
+        "addressLine1": { "type": "string" },
+        "city": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "contactNumber": { "type": "string" },
+        "receiptPrefix": { "type": "string" }
+      },
+      "required": ["templeName", "receiptPrefix"]
+    }
+  },
+  "firestore": {
+    "/devotees/{devoteeId}": {
+      "schema": "devotee",
+      "description": "Collection of all registered devotees"
+    },
+    "/sevas/{sevaId}": {
+      "schema": "seva",
+      "description": "Collection of all sevas in the catalog"
+    },
+    "/bills/{billId}": {
+      "schema": "bill",
+      "description": "Collection of devotee receipts"
+    },
+    "/expenses/{expenseId}": {
+      "schema": "expense",
+      "description": "Collection of all temple expenses"
+    },
+    "/ledger/{ledgerId}": {
+      "schema": "ledger",
+      "description": "Live double-entry financial ledger totals"
+    },
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "Authorized temple operators and staff"
+    },
+    "/settings/{settingsId}": {
+      "schema": "settings",
+      "description": "Temple identity, UPI, and receipt settings"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Sri Sai Mandira Billing Software",
+  "description": "A comprehensive temple management and billing software application for Dakshina Shirdi Sri Sai Mandira, Bangalore.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

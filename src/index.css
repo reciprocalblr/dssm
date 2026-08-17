@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Hubballi&family=Noto+Sans+Kannada:wght@300;400;500;600;700;800&family=Noto+Serif+Kannada:wght@400;500;600;700;800;900&family=Tiro+Kannada:ital@0;1&family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap");
+
+@import "tailwindcss";
+
+/* Style configurations for the immersive Temple Billing experience */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family:
+    "Plus Jakarta Sans",
+    "Noto Serif Kannada",
+    "Noto Sans Kannada",
+    "Baloo Tamma 2",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background-color: #140908; /* Deep rich dark-brown */
+  color: #f4eae6; /* Smooth antique white */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  touch-action: manipulation;
+}
+
+/* Custom Typography Helpers */
+.font-display {
+  font-family: "Cinzel", "Playfair Display", Georgia, serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Elegant and polished font classes for Kannada characters */
+.font-kannada-serif {
+  font-family: "Noto Serif Kannada", "Tiro Kannada", serif;
+}
+
+.font-kannada-sans {
+  font-family: "Noto Serif Kannada", "Baloo Tamma 2", sans-serif;
+  letter-spacing: normal;
+}
+
+/* Safe area support for iOS & notched Android devices */
+.safe-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-pt {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+html[lang="kn"],
+html[lang="kn"] body,
+html[lang="kn"] select,
+html[lang="kn"] input,
+html[lang="kn"] textarea,
+html[lang="kn"] button,
+html[lang="kn"] p,
+html[lang="kn"] span,
+html[lang="kn"] h1,
+html[lang="kn"] h2,
+html[lang="kn"] h3,
+html[lang="kn"] h4,
+html[lang="kn"] h5,
+html[lang="kn"] h6,
+html[lang="kn"] label,
+html[lang="kn"] table,
+html[lang="kn"] th,
+html[lang="kn"] td,
+html[lang="kn"] a,
+html[lang="kn"] li {
+  font-family: "Noto Serif Kannada", "Tiro Kannada", serif !important;
+  letter-spacing: 0.01em;
+}
+
+/* Smooth content transitions when switching language */
+button, span, p, h1, h2, h3, h4, h5, h6, label, td, th {
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0504;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a1715;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7a00;
+}
+
+/* Custom scrollbar for light background panels and dropdowns */
+.light-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.light-scrollbar::-webkit-scrollbar-track {
+  background: #f3efe9 !important; /* Soft sand-cream background to fit the parchment aesthetic */
+  border-radius: 3px;
+}
+.light-scrollbar::-webkit-scrollbar-thumb {
+  background: #dcd1c4 !important; /* Warm sand-grey scrollbar thumb */
+  border-radius: 3px;
+}
+.light-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ff7a00 !important; /* Highlight on hover */
+}
+
+/* Custom Input Field Base Styles to prevent styling differences */
+input,
+select,
+textarea {
+  background-color: #faf5ef !important; /* Beautiful light cream/parchment theme */
+  color: #1c0d0a !important; /* Deep rich espresso for maximum contrast & readability */
+  border: 1px solid #dcd1c4 !important; /* Soft sand-warm border */
+  border-radius: 0.5rem !important;
+  font-size: 16px !important; /* Ensures mobile browsers do not auto-zoom on touch */
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 0.875rem !important; /* 14px on tablets & desktops */
+  }
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  background-color: #ffffff !important; /* Pure white focus state */
+  border-color: #ff7a00 !important;
+  box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.2) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8c736f !important; /* Antique mid-tone matching color */
+}
+
+/* Utility layout animations */
+.glow-card {
+  box-shadow: 0 4px 20px -2px rgba(255, 122, 0, 0.05);
+}
+
+/* Precise A4 Half-Sheet & Full-Sheet Media Printing Engine classes */
+@page {
+  size: A4 portrait;
+  margin: 0mm !important; /* Removes browser default headers (date/time/title) and footers (url/page numbers) */
+}
+
+@media print {
+  html,
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  @page {
+    size: auto;
+    margin: 0mm !important;
+  }
+
+  .no-print,
+  .no-print * {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .print-only {
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+  }
+}
+
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
+
+/* Soundwave Animation Keyframes */
+@keyframes soundwave {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 12px;
+  }
+}
+
+/* Divine Welcome Card Waves & AUM Animations */
+@keyframes animatedWave1 {
+  0% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: translateX(-40px) scaleY(1.06);
+    filter: hue-rotate(18deg);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes animatedWave2 {
+  0% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: translateX(45px) scaleY(0.94);
+    filter: hue-rotate(-22deg);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes animatedWave3 {
+  0% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: translateX(-30px) scaleY(1.05);
+    filter: hue-rotate(25deg);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes animatedWave4 {
+  0% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: translateX(35px) scaleY(1.08);
+    filter: hue-rotate(-18deg);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes aumGlowPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 18px rgba(255, 122, 0, 0.38), 0 0 10px rgba(255, 193, 7, 0.25);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 8px 26px rgba(255, 122, 0, 0.6), 0 0 18px rgba(255, 193, 7, 0.4);
+  }
+}
+
+@keyframes haloRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes haloRotateReverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-wave-1 {
+  animation: animatedWave1 14s ease-in-out infinite;
+}
+
+.animate-wave-2 {
+  animation: animatedWave2 18s ease-in-out infinite;
+}
+
+.animate-wave-3 {
+  animation: animatedWave3 22s ease-in-out infinite;
+}
+
+.animate-wave-4 {
+  animation: animatedWave4 16s ease-in-out infinite;
+}
+
+.animate-aum-glow {
+  animation: aumGlowPulse 4s ease-in-out infinite;
+}
+
+.animate-halo-spin {
+  animation: haloRotate 25s linear infinite;
+}
+
+.animate-halo-spin-rev {
+  animation: haloRotateReverse 35s linear infinite;
+}
+
